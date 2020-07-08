@@ -4,7 +4,7 @@ import s from './Profile.module.css';
 
 const Profile = () => {
     return (
-        <main className={s.content}>
+        <main>
             <img src='https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885__340.jpg' />
 
             <div> avatar + description</div>
