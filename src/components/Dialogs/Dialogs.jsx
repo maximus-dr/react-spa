@@ -1,36 +1,39 @@
 import React from 'react';
 import s from './Dialogs.module.css';
+import { NavLink } from 'react-router-dom';
+
+const DialogItem = (props) => {
+    let path = '/dialogs/' + props.id;
+
+    return (
+        <div className={s.dialog + ' ' + s.active}>
+            <NavLink to={path}>
+                {props.name}
+            </NavLink>
+        </div>
+    );
+}
+
+const Message = (props) => {
+    return <div className={s.message}>{props.message}</div>
+}
 
 const Dialogs = (props) => {
     return (
          <div className={s.dialogs}>
             <div className={s.dialogsItems}>
-                 <div className={s.dialog + ' ' + s.active}>
-                     Kate
-                 </div>
-                 <div className={s.dialog}>
-                     Oleg
-                 </div>
-                 <div className={s.dialog}>
-                     Igor
-                 </div>
-                 <div className={s.dialog}>
-                     Viktor
-                 </div>
-                 <div className={s.dialog}>
-                     Valery
-                 </div>
-                 <div className={s.dialog}>
-                     Michael
-                 </div>
-                 <div className={s.dialog}>
-                     Denis
-                 </div>
+                <DialogItem name='Kate' id='01' />
+                <DialogItem name='Oleg' id='02' />
+                <DialogItem name='Dmitry' id='03' />
+                <DialogItem name='Alex' id='04' />
+                <DialogItem name='Denis' id='05' />
+                <DialogItem name='Igor' id='06' />
+                <DialogItem name='Valery' id='07' />
              </div>
             <div className={s.messages}>
-                <div className={s.message}>Hi</div>
-                <div className={s.message}>How are you?</div>
-                <div className={s.message}>Hello</div>
+                <Message message='Hi' />
+                <Message message='How are you?' />
+                <Message message='Hello' />
             </div>
          </div>
     );
