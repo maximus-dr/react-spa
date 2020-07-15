@@ -1,38 +1,14 @@
 const FOLLOW = 'FOLLOW';
 const UNFOLLOW = 'UNFOLLOW';
 const SET_USERS = 'SET-USERS';
+const SET_CURRENT_PAGE = 'SET-CURRENT-PAGE';
+const SET_TOTAL_USERS_COUNT = 'SET-TOTAL-USERS-COUNT';
 
 let initialState = {
-    users: [
-        // {
-        //     id: 1, 
-        //     photoUrl: 'https://image.flaticon.com/icons/svg/147/147144.svg', followed: false, 
-        //     fullName: 'Maximus', 
-        //     status: 'My status', 
-        //     location: {city: 'Minsk', country: 'Belarus'}
-        // },
-        // {
-        //     id: 2, 
-        //     photoUrl: 'https://image.flaticon.com/icons/svg/147/147144.svg', followed: true, 
-        //     fullName: 'Olga', 
-        //     status: 'My status', 
-        //     location: {city: 'Moscow', country: 'Russia'}
-        // },
-        // {
-        //     id: 3, photoUrl: 'https://image.flaticon.com/icons/svg/147/147144.svg', 
-        //     followed: false, 
-        //     fullName: 'Oleg', 
-        //     status: 'My status', 
-        //     location: {city: 'New-York', country: 'USA'}
-        // },
-        // {
-        //     id: 4, 
-        //     photoUrl: 'https://image.flaticon.com/icons/svg/147/147144.svg', followed: false, 
-        //     fullName: 'Valery', 
-        //     status: 'My status', 
-        //     location: {city: 'Warsaw', country: 'Poland'}
-        // },
-    ]
+    users: [],
+    pageSize: 5,
+    totalUsersCount: 0,
+    currentPage: 1
 };
 
 const UsersReducer = (state = initialState, action) => {
@@ -63,7 +39,19 @@ const UsersReducer = (state = initialState, action) => {
         case SET_USERS:
             return { 
                 ...state, 
-                users: [...state.users, ...action.users]
+                users: action.users
+            }
+
+        case SET_CURRENT_PAGE:
+            return {
+                ...state,
+                currentPage: action.currentPage
+            }
+
+        case SET_TOTAL_USERS_COUNT:
+            return {
+                ...state,
+                totalUsersCount: action.count
             }
 
         default:
@@ -74,5 +62,7 @@ const UsersReducer = (state = initialState, action) => {
 export const followAC = (userId) => ({type: FOLLOW, userId});
 export const unfollowAC = (userId) => ({type: UNFOLLOW, userId});
 export const setUsersAC = (users) => ({type: SET_USERS, users});
+export const setCurrentPageAC = (currentPage) => ({type: SET_CURRENT_PAGE, currentPage});
+export const setTotalUsersCountAC = (totalCount) => ({type: SET_TOTAL_USERS_COUNT, count: totalCount});
 
 export default UsersReducer;
