@@ -8,8 +8,9 @@ const Header = (props) => {
             <img src="https://pluspng.com/img-png/nasa-logo-png-file-nasa-logo-svg-1237.png" />
 
             <div className={s.loginBlock}>
+                {console.log(props.isAuth)}
                 { props.isAuth 
-                    ? props.login
+                    ? <div>{props.login} - <button onClick={props.logout}>Logout</button></div> 
                     : <NavLink to={'/login'}>Login</NavLink> }
             </div>
         </header>
