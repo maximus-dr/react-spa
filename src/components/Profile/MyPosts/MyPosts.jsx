@@ -7,28 +7,6 @@ import { Textarea } from '../../common/FormsControls/FormsControls';
 
 const maxLength30 = maxLengthCreator(30);
 
-const MyPosts = (props) => {
-
-    let postsElements = props.posts
-        .map( p => <Post message={p.message} likesCount={p.likes} /> );
-
-    let newPostElement = React.createRef();
-
-    let onAddPost = (values) => {
-        props.addPost(values.newPostText);
-    }
-
-    return (
-        <div className={s.postsBlock}>
-            <h3>My Posts</h3>
-            <AddNewPostForm onSubmit={onAddPost} />
-            <div className={s.posts}>
-                {postsElements}
-            </div>
-        </div>
-    );
-}
-
 let AddNewPostForm = (props) => {
     return (
         <form onSubmit={props.handleSubmit}>
@@ -47,6 +25,29 @@ let AddNewPostForm = (props) => {
     )
 }
 
-AddNewPostForm = reduxForm({form: 'ProfileAddNewPostForm'})(AddNewPostForm);
+let AddNewPostFormRedux = reduxForm({form: 'ProfileAddNewPostForm'})(AddNewPostForm);
+
+const MyPosts = (props) => {
+
+    let postsElements = props.posts
+        .map( p => <Post message={p.message} likesCount={p.likes} /> );
+
+    let newPostElement = React.createRef();
+
+    let onAddPost = (values) => {
+        props.addPost(values.newPostText);
+    }
+
+    return (
+        <div className={s.postsBlock}>
+            <h3>My Posts</h3>
+            <AddNewPostFormRedux onSubmit={onAddPost} />
+            <div className={s.posts}>
+                {postsElements}
+            </div>
+        </div>
+    );
+}
+
 
 export default MyPosts;
