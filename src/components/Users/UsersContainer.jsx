@@ -4,7 +4,7 @@ import { follow, unfollow, setCurrentPage, toggleFollowingProgress, requestUsers
 import Users from './Users';
 import Preloader from '../common/Preloader/Preloader';
 import { compose } from 'redux';
-import { getPageSize, getTotalUsersCount, getCurrentPage, getIsFetching, getUsers } from '../../redux/users-selectors';
+import { getPageSize, getTotalUsersCount, getCurrentPage, getIsFetching, getUsersSuperSelector, getUsers } from '../../redux/users-selectors';
 
 
 class UsersAPIComponent extends React.Component {
@@ -19,7 +19,6 @@ class UsersAPIComponent extends React.Component {
     }
 
     render() {
-
         return <>
             { this.props.isFetching ? <Preloader /> : null }
             <Users totalUsersCount={this.props.totalUsersCount}
