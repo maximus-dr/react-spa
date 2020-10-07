@@ -14,7 +14,7 @@ const FOLLOWING_IS_IN_PROGRESS = 'FOLLOWING-IS-IN-PROGRESS';
 let initialState = {
     users: [],
     pageSize: 5,
-    totalUsersCount: 20,
+    totalUsersCount: 100,
     currentPage: 1,
     isFetching: false,
     followingInProgress: [],
