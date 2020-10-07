@@ -9,7 +9,7 @@ let initialState = {
     posts: [
         {id: 1, message: 'Hi, how are you?', likes: 12},
         {id: 2, message: 'It is my first post', likes: 4},
-        {id: 2, message: 'So beatiful', likes: 13}
+        {id: 3, message: 'So beatiful', likes: 13}
     ],
     profile: null,
     status: ''
@@ -21,7 +21,7 @@ const profileReducer = (state = initialState, action) => {
 
         case ADD_POST:
             let newPost = {
-                id: 5,
+                id: state.posts.length + 1,
                 message: action.newPostText,
                 likes: 0
             };
@@ -46,7 +46,7 @@ const profileReducer = (state = initialState, action) => {
         case DELETE_POST: 
             return {
                 ...state,
-                posts: state.posts.filter(p => p.id != action.postId)
+                posts: state.posts.filter(p => p.id !== action.postId)
             }
 
         default:

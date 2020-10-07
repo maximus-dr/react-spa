@@ -2,8 +2,8 @@ import React from 'react';
 import s from './Users.module.css';
 import userPhoto from '../../assets/img/user.svg';
 import { NavLink } from 'react-router-dom';
-import { usersAPI } from '../../api/api';
-import Paginator from '../common/Paginator/Paginator';
+// import { usersAPI } from '../../api/api';
+// import Paginator from '../common/Paginator/Paginator';
 
 const User = ({user, followingInProgress, unfollow, follow}) => {
 
@@ -12,7 +12,7 @@ const User = ({user, followingInProgress, unfollow, follow}) => {
             <span>
                 <div>
                     <NavLink to={'/profile/' + user.id}>
-                        <img src={user.photos.small !== null ? user.photos.small : userPhoto} className={s.userPhoto} />
+                        <img src={user.photos.small !== null ? user.photos.small : userPhoto} className={s.userPhoto} alt="avatar"/>
                     </NavLink>
                 </div>
                 <div>
