@@ -2,7 +2,7 @@ import React from 'react';
 import s from './Paginator.module.css';
 
 
-const Paginator = (totalUsersCount, pageSize, currentPage, onPageChanged) => {
+const Paginator = ({totalUsersCount, pageSize, currentPage, onPageChanged}) => {
     let pagesCount = Math.ceil(totalUsersCount / pageSize);
 
     let pages = [];
@@ -13,7 +13,7 @@ const Paginator = (totalUsersCount, pageSize, currentPage, onPageChanged) => {
     return (
         <div>
             {pages.map(p => {
-                return <span onClick={() => onPageChanged(p)} className={currentPage === p && s.selectedPage}>{p}</span>
+                return <span onClick={() => onPageChanged(p)} className={currentPage === p ? s.selectedPage : ''} key={p}>{p}</span>
             })}
         </div>
     );
