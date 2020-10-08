@@ -5,7 +5,7 @@ import ProfileStatusWithHooks from './ProfileStatusWithHooks';
 import ProfileAvatar from '../../../assets/img/profile-avatar.jpg';
 import ProfileDataForm from './ProfileDataForm';
 
-const ProfileInfo = ({isOwner, profile, status, updateStatus, savePhoto}) => {
+const ProfileInfo = ({isOwner, profile, status, updateStatus, savePhoto, saveProfile}) => {
 
     let [editMode, setEditMode] = useState(false);
 
@@ -17,6 +17,10 @@ const ProfileInfo = ({isOwner, profile, status, updateStatus, savePhoto}) => {
         if (e.target.files.length) {
             savePhoto(e.target.files[0]);
         }
+    };
+
+    const onSubmit = (formData) => {
+        saveProfile(formData);
     };
 
     return (
@@ -41,7 +45,7 @@ const ProfileInfo = ({isOwner, profile, status, updateStatus, savePhoto}) => {
 
                 {
                     editMode 
-                    ? <ProfileDataForm profile={profile} /> 
+                    ? <ProfileDataForm profile={profile} onSubmit={onSubmit}/> 
                     : <ProfileData 
                         profile={profile} 
                         isOwner={isOwner}
@@ -69,9 +73,9 @@ const ProfileData = ({profile, isOwner, goToEditMode}) => {
             <div>
                 <div>
                     <b>Looking for a job</b>: {
-                        profile.lookingForAJob ? 
-                            'yes' : 
-                            'no'
+                        profile.lookingForAJob 
+                        ? 'yes'  
+                        : 'no'
                     }
                 </div>
                 {
