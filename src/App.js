@@ -60,6 +60,7 @@ class App extends Component {
           <Route path='/music' component={Music} />
           <Route path='/settings' component={Settings} />
           <Route path='/login' component={Login} />
+          <Route path='*' render={() => <div>404 NOT FOUND</div>} />
         </div>
       </div>
     );
